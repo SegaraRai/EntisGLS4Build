@@ -7,12 +7,12 @@ diff -upr --strip-trailing-cr gls4s.05.2015.04.18/EntisGLS3/GLS3/Source/glscsobj
  			clrCurrent.rgbMul =
 -				EGLPalette( m_clrEndColor.rgbMul ) * nDegree
 -					+ EGLPalette( m_clrStartColor.rgbMul ) * (0x100 - nDegree) ;
-+        EGL_PALETTE(EGLPalette( m_clrEndColor.rgbMul ) * nDegree
++				EGL_PALETTE(EGLPalette( m_clrEndColor.rgbMul ) * nDegree
 +					+ EGLPalette( m_clrStartColor.rgbMul ) * (0x100 - nDegree)) ;
  			clrCurrent.rgbAdd =
 -				EGLPalette( m_clrEndColor.rgbAdd ) * nDegree
 -					+ EGLPalette( m_clrStartColor.rgbAdd ) * (0x100 - nDegree) ;
-+        EGL_PALETTE(EGLPalette( m_clrEndColor.rgbAdd ) * nDegree
++				EGL_PALETTE(EGLPalette( m_clrEndColor.rgbAdd ) * nDegree
 +					+ EGLPalette( m_clrStartColor.rgbAdd ) * (0x100 - nDegree)) ;
  			nTransparency =
  				(m_nEndTransparency * nDegree
