@@ -88,7 +88,7 @@ async function readdirRecursive(dirPath) {
           continue;
         }
         const destPath = path.join(destDirPath, path.relative(srcDirPath, filePath));
-        const refPath = path.relative(destDirPath, filePath);
+        const refPath = path.relative(path.dirname(destPath), filePath);
         if (!map.has(destPath)) {
           map.set(destPath, []);
         }
