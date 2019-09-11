@@ -40,6 +40,12 @@ int xwmain(int argc, wchar_t* argv[]) {
   }
   
   if (!symbolFound) {
+    const auto offsetTo = str.find(to);
+    if (offsetTo != std::string::npos) {
+      std::wcerr << L"already patched"sv << std::endl;
+      return 0;
+    }
+    
     std::wcerr << L"symbol not found"sv << std::endl;
     return 3;
   }
