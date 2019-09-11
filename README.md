@@ -74,4 +74,4 @@ EntisGLS4_woはx86とx64、EntisGLS4_woeはx86のみ対応しています。
 
 To the extent possible under law, SegaraRai has waived all copyright and related or neighboring rights to EntisGLS4Build. This work is published from: 日本.  
 
-EntisGLS4については、その[ライセンス](https://www.entis.jp/gls/license.txt)が適用されます。  
+EntisGLS4については、[そのライセンス](https://www.entis.jp/gls/license.txt)が適用されます。  
