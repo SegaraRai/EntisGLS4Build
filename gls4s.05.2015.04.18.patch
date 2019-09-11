@@ -1,0 +1,52 @@
+diff -upr --strip-trailing-cr gls4s.05.2015.04.18/EntisGLS3/GLS3/Source/glscsobj_model_joint.cpp gls4s.05.2015.04.18/EntisGLS3/GLS3/Source/glscsobj_model_joint.cpp
+--- gls4s.05.2015.04.18/EntisGLS3/GLS3/Source/glscsobj_model_joint.cpp	2012-11-16 03:18:10.000000000 +0900
++++ gls4s.05.2015.04.18/EntisGLS3/GLS3/Source/glscsobj_model_joint.cpp	2019-09-04 00:00:00.000000000 +0900
+@@ -206,11 +206,11 @@ bool ECSModelJoint::OnAdvanceAnimation(
+ 			unsigned int	nDegree = 0x100 * dwOffsetTime / m_dwDurationTime ;
+ 			//
+ 			clrCurrent.rgbMul =
+-				EGLPalette( m_clrEndColor.rgbMul ) * nDegree
+-					+ EGLPalette( m_clrStartColor.rgbMul ) * (0x100 - nDegree) ;
++        EGL_PALETTE(EGLPalette( m_clrEndColor.rgbMul ) * nDegree
++					+ EGLPalette( m_clrStartColor.rgbMul ) * (0x100 - nDegree)) ;
+ 			clrCurrent.rgbAdd =
+-				EGLPalette( m_clrEndColor.rgbAdd ) * nDegree
+-					+ EGLPalette( m_clrStartColor.rgbAdd ) * (0x100 - nDegree) ;
++        EGL_PALETTE(EGLPalette( m_clrEndColor.rgbAdd ) * nDegree
++					+ EGLPalette( m_clrStartColor.rgbAdd ) * (0x100 - nDegree)) ;
+ 			nTransparency =
+ 				(m_nEndTransparency * nDegree
+ 					+ m_nStartTransparency * (0x100 - nDegree)) / 0x100 ;
+diff -upr --strip-trailing-cr gls4s.05.2015.04.18/EntisGLS3/erisalib/Include/experi.inc gls4s.05.2015.04.18/EntisGLS3/erisalib/Include/experi.inc
+--- gls4s.05.2015.04.18/EntisGLS3/erisalib/Include/experi.inc	2015-01-30 15:39:28.000000000 +0900
++++ gls4s.05.2015.04.18/EntisGLS3/erisalib/Include/experi.inc	2019-09-04 00:00:00.000000000 +0900
+@@ -437,7 +437,7 @@ ERISADecodeContext@@DecodeERISACodeBytes
+ 	<?DecodeERISACodeBytes@ERISADecodeContext@@QAEKPACK@Z>
+ 
+ ERISADecoder@@m_pfnColorOperation	TEXTEQU	\
+-	<?m_pfnColorOperation@ERISADecoder@@1QBQ81@AEXXZB>
++	<m_pfnColorOperation@ERISADecoder@@1QBQ81@AEXXZB>	;<?m_pfnColorOperation@ERISADecoder@@1QBQ81@AEXXZB>
+ ERISADecoder@@PerformOperation	TEXTEQU	\
+ 	<?PerformOperation@ERISADecoder@@IAEXKJPAC@Z>
+ ERISADecoder@@ColorOperation0000	TEXTEQU	\
+diff -upr --strip-trailing-cr gls4s.05.2015.04.18/EntisGLS4s.05/Source/common/sakura/ssys_std_ui.cpp gls4s.05.2015.04.18/EntisGLS4s.05/Source/common/sakura/ssys_std_ui.cpp
+--- gls4s.05.2015.04.18/EntisGLS4s.05/Source/common/sakura/ssys_std_ui.cpp	2015-04-17 17:52:22.000000000 +0900
++++ gls4s.05.2015.04.18/EntisGLS4s.05/Source/common/sakura/ssys_std_ui.cpp	2019-09-04 00:00:00.000000000 +0900
+@@ -354,7 +354,7 @@ public:
+ 	BrowseOpenFileProcedure( void ) : SSyncProcedure( NULL ) {}
+ 	virtual void Run( void ) ;
+ } ;
+-static char * ConvertFileDialogFilter
++static const char * ConvertFileDialogFilter
+ 	( SArray<char>& bufFilter, const wchar_t ** ppwszFileFilters ) ;
+ #elif	defined(__PLATFORM_ANDROID__)
+ static void EnumFileDialogFilter
+@@ -503,7 +503,7 @@ void BrowseOpenFileProcedure::Run( void
+ 	m_flagResult = ::GetOpenFileName( m_pofn ) ;
+ }
+ 
+-static char * ConvertFileDialogFilter
++static const char * ConvertFileDialogFilter
+ 	( SArray<char>& bufFilter, const wchar_t ** ppwszFileFilters )
+ {
+ 	if ( ppwszFileFilters != NULL )
